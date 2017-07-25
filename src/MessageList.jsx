@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import Message from './Message.jsx';
-
-ReactDOM.render(<Message />, document.getElementById('react-message'));
 
 class MessageList extends Component {
   render() {
@@ -14,3 +10,4 @@ class MessageList extends Component {
   }
 }
 export default MessageList;
+
