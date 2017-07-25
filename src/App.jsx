@@ -45,7 +45,7 @@ class App extends Component {
       <div id="react-root">
         <NavBar />
         <MessageList />
-        <ChatBar />
+        <ChatBar currentUser={ this.state.currentUser } />
       </div>
     );
   }
