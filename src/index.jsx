@@ -7,9 +7,10 @@ require("../styles/application.scss");
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
+import ChatBar from './ChatBar.jsx';
+import MessageList from './Message.jsx';
 
 ReactDOM.render(<App />, document.getElementById('react-root'));
-// ReactDOM.render(<ChatBar />, document.getElementById('react-footer'));
-// ReactDOM.render(<Message />, document.getElementById('react-message'));
-// ReactDOM.render(<MessageList />, document.getElementById('react-list'));
+ReactDOM.render(<ChatBar />, document.getElementById('react-footer'));
+ReactDOM.render(<MessageList />, document.getElementById('react-list'));
 
