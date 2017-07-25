@@ -28,24 +28,24 @@ class App extends Component {
     }
   }
 
+  addMessage(content) {
+    const newMessage = {
+      id: uniqueId(),
+      username: 'Anonymous',
+      content
+    };
+    const newList = this.state.messages.concat(newMessage);
+    this.setState({
+      messages: newList
+    });
+  }
+
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ 
-        currentUser: { name: 'Bob' }, 
-        messages: [
-          {
-            id: uniqueId(),
-            username: 'Bob',
-            content: 'Has anyone seen my marbles?',
-          },
-          {
-            id: uniqueId(),
-            username: 'Anonymous',
-            content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.'
-          }
-        ]
-      })
-    }, 500)
+      const newMessage = {id: 3, username: 'Michelle', content: 'Hello there!'};
+      const messages = this.state.messages.concat(newMessage)
+      this.setState({ messages })
+    }, 500);
   }
 
   render() {
@@ -53,7 +53,7 @@ class App extends Component {
       <div id="react-root">
         <NavBar />
         <MessageList messages={ this.state.messages }/>
-        <ChatBar currentUser={ this.state.currentUser } />
+        <ChatBar sendMessage={ this.addMessage.bind(this) } currentUser={ this.state.currentUser } />
       </div>
     );
   }
