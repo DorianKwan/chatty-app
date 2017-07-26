@@ -7,6 +7,8 @@ function uniqueId() {
   return Math.random().toString(36).substr(2, 6);
 }
 
+const wsServer = new WebSocket('ws://0.0.0.0:3001/')
+
 class App extends Component {
 
   constructor(props) {
@@ -29,11 +31,15 @@ class App extends Component {
   }
 
   addMessage(content) {
+    console.log(content);
     const newMessage = {
       id: uniqueId(),
       username: 'Anonymous',
       content
     };
+      console.log('sending up data: ' + JSON.stringify(newMessage));
+      wsServer.send(JSON.stringify(newMessage));
+
     const newList = this.state.messages.concat(newMessage);
     this.setState({
       messages: newList
@@ -41,6 +47,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    wsServer.onopen = () => {
+      console.log('Websocket Connection Made!');
+    }
+
     setTimeout(() => {
       const newMessage = {id: 3, username: 'Michelle', content: 'Hello there!'};
       const messages = this.state.messages.concat(newMessage)
