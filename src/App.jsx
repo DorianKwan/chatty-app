@@ -4,10 +4,6 @@ import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 import uuidv4 from 'uuid/v4';
 
-function uniqueId() {
-  return Math.random().toString(36).substr(2, 6);
-}
-
 const wsServer = new WebSocket('ws://0.0.0.0:3001/')
 
 class App extends Component {
@@ -29,11 +25,6 @@ class App extends Component {
     };
       console.log('sending up data: ' + JSON.stringify(newMessage));
       wsServer.send(JSON.stringify(newMessage));
-
-    const newList = this.state.messages.concat(newMessage);
-    this.setState({
-      messages: newList
-    });
   }
 
   componentDidMount() {
@@ -43,10 +34,15 @@ class App extends Component {
     }
 
     setTimeout(() => {
-      const newMessage = {id: 3, username: 'Michelle', content: 'Hello there!'};
-      const messages = this.state.messages.concat(newMessage)
+      const messages = this.state.messages
       this.setState({ messages })
     }, 500);
+    wsServer.onmessage = event => {
+      const newList = this.state.messages.concat(JSON.parse(event.data));
+      this.setState({
+        messages: newList
+      });
+    }
   }
 
   render() {
