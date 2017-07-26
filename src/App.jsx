@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
+import uuidv4 from 'uuid/v4';
 
 function uniqueId() {
   return Math.random().toString(36).substr(2, 6);
@@ -15,26 +16,15 @@ class App extends Component {
     super(props);
     this.state = { 
       currentUser: { name: 'Bob' }, 
-      messages: [
-        {
-          id: uniqueId(),
-          username: 'Bob',
-          content: 'Has anyone seen my marbles?',
-        },
-        {
-          id: uniqueId(),
-          username: 'Anonymous',
-          content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.'
-        }
-      ]
+      messages: []
     }
   }
 
   addMessage(content) {
     console.log(content);
     const newMessage = {
-      id: uniqueId(),
-      username: 'Anonymous',
+      id: uuidv4(),
+      username: this.state.currentUser.name,
       content
     };
       console.log('sending up data: ' + JSON.stringify(newMessage));
