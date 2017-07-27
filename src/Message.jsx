@@ -12,18 +12,4 @@ class Message extends Component {
   }
 }
 
-Message.propTypes = {
-    username: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired
-  }
-
 export default Message;
-
-
-
-
-/* TODO
-  <div class="message system">
-    Anonymous1 changed their name to nomnom.
-  </div>
-*/
