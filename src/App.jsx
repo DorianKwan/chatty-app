@@ -58,15 +58,13 @@ class App extends Component {
 
     wsServer.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data);
       if (data.content) {
         const newPost = data
         const newList = this.state.messages.concat(newPost);
         this.setState({
           messages: newList,
         });
-      }
-      else {
+      } else {
         const newUser = data;
         this.setState({
           usercount: newUser

@@ -1,16 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+@import url('https://fonts.googleapis.com/css?family=Satisfy|Source+Code+Pro');
+
+a {
+  font-family: 'Satisfy', 'sans serif';
+  font-size: 1.5em;
+}
 
 body {
   background: white;
-  color: black;
-  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   margin: 70px 0;
 }
 
 .chatbar {
-  background: tomato;
+  background: #003366;
   border-top: 1px solid black;
   bottom: 0;
   display: flex;
@@ -22,6 +26,7 @@ body {
 
 .chatbar-message,
 .chatbar-username {
+  color: black;
   border: 1px solid black;
   display: block;
   height: 40px;
@@ -31,10 +36,12 @@ body {
 }
 
 .chatbar-message {
+  border-radius: 5px;
   flex: 8;
 }
 
 .chatbar-username {
+  border-radius: 5px;
   flex: 2;
 }
 
@@ -65,7 +72,8 @@ body {
 }
 
 .navbar {
-  background: tomato;
+  color: white;
+  background: #003366;
   border-bottom: 1px solid black;
   height: 60px;
   left: 0;
@@ -85,6 +93,10 @@ body {
   line-height: 60px;
   padding: 0 10px;
   text-decoration: none;
+}
+
+span {
+  font-family: 'Source Code Pro', 'sans serif';
 }
 
 .users-count {
