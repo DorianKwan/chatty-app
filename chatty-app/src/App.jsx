@@ -14,8 +14,10 @@ class App extends Component {
       messages: [{ type: 'post', id: 1, username: 'ChattyBot', content: 'Welcome to Chatty App!' }]
     }
   }
+  
+  // Sends new message from client to the server
 
-  addMessage(content) {
+  sendMessage(content) {
     if(content === '') {
       return
     }
@@ -28,7 +30,12 @@ class App extends Component {
     wsServer.send(JSON.stringify(newMessage));
   }
 
+  // Sets the state of current user to a new user
+
   setUser(newUser) {
+
+    // Logic to filter empty name change requests
+
     if(newUser === '') {
       return
     }
@@ -42,22 +49,17 @@ class App extends Component {
     this.setState({ currentUser: { name: newUser } });
   }
 
-  componentDidMount() {
-    wsServer.onopen = (event) => {
-      console.log('Websocket Connection Made!');
-    }
+  // Once the dom node has loaded run this bit of code
 
-    setTimeout(() => {
-      const messages = this.state.messages;
-      const usercount = this.state.usercount;
-      this.setState({ 
-        messages, 
-        usercount 
-      })
-    }, 500);
+  componentDidMount() {
+
+    // Event handler for incoming messages from the server
 
     wsServer.onmessage = (event) => {
       const data = JSON.parse(event.data);
+
+      // Logic to check if the incoming message has content
+
       if (data.content) {
         const newPost = data
         const newList = this.state.messages.concat(newPost);
@@ -78,7 +80,7 @@ class App extends Component {
       <div id="react-root">
         <NavBar usercount={ this.state.usercount }/>
         <MessageList messages={ this.state.messages }/>
-        <ChatBar sendMessage={ this.addMessage.bind(this) } setUser={ this.setUser.bind(this) } />
+        <ChatBar sendMessage={ this.sendMessage.bind(this) } setUser={ this.setUser.bind(this) } />
       </div>
     );
   }

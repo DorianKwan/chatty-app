@@ -7,6 +7,7 @@ class MessageList extends Component {
     super(props);
   }
   render() {
+    // Iterate through each message in messages and gives message.jsx access to the values
     const messages = this.props.messages.map(message => {
       return <Message
         key= { message.id }
