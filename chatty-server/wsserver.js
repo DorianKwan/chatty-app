@@ -33,6 +33,7 @@ function handleMessage(data) {
     } else {
       dataObj.content = `${dataObj.username} has changed their name to ${dataObj.content}`;
       dataObj.username = 'System Notification';
+      dataObj.textcolor = { color: 'black' };
       message = JSON.stringify(dataObj);
       break;
     }
@@ -49,6 +50,7 @@ function handleMessage(data) {
 // Handles connection and disconnection to server
 
 function handleConnection(client) {
+  console.log('Client connected');
   userCount = wss.clients.size;
   client.send(userCount);
   broadcast(userCount);
