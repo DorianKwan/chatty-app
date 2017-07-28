@@ -67,9 +67,9 @@ class App extends Component {
           messages: newList,
         });
       } else {
-        const newUser = data;
+        const usercount = data;
         this.setState({
-          usercount: newUser
+          usercount
         });
       }
     }
