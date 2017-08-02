@@ -1,11 +1,19 @@
-React Boilerplate
+Chatty
 =====================
 
-A minimal and light dev environment for ReactJS.
+Welcome to ChattyApp 
+  - A group messaging system based off of features offered in Slack. Chatty was build using JavaScript, ReactJS and  a websocket server to update users in real-time.
+  - Users of Chatty will be able to send messages to a message board where they will be broadcasted to the rest of the current active users
+  - Users are named anonymous unless they decide to change their username for their current session. Picking a username will change the color of their name within the message board. Colors and usernames are only active during their session and reset once refreshed or exited.
+  
+  
+### As seen below
+=====================
+
 
 ### Usage
 
-Clone the boilerplate and create your own git repo.
+Clone the application and create your own git repo.
 
 ```
 git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
@@ -19,27 +27,10 @@ Install the dependencies and start the server.
 
 ```
 npm install
+```
+Once installed you are ready to use Chatty ! Enjoy
+
+```
 npm start
 open http://localhost:3000
 ```
-
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
-
-### Dependencies
-
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
