@@ -8,19 +8,17 @@ Welcome to ChattyApp
   
   
 ### As seen below
-=====================
 
+![Alt text](/chatty-app/screenshots/chatty.png?raw=true "Chatty")
 
 ### Usage
 
 Clone the application and create your own git repo.
 
 ```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
+git clone git@github.com:DorianKwan/chatty-app.git
 git remote rm origin
 git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
 ```
 
 Install the dependencies and start the server.
@@ -29,8 +27,14 @@ Install the dependencies and start the server.
 npm install
 ```
 Once installed you are ready to use Chatty ! Enjoy
+Note: Both the app server and the websocket server must be running to use Chatty (requires two command line tabs)
 
 ```
-npm start
-open http://localhost:3000
+// First tab
+cd chatty-app
+npm start 
+// Second tab
+cd chatty-server
+node wsserver.js
+visit http://localhost:3000
 ```
